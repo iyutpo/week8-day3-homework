@@ -4,10 +4,15 @@
     <title>Food Blog</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script> -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <style>
+        *, ::after, ::before {
+            box-sizing: content-box;
+        }
         * {
             font-family:Arial, Helvetica, sans-serif;
         }
@@ -92,8 +97,7 @@
     <aside id="leftside"></aside>
     <aside id="rightside"></aside>
     <div id="container">
-        <!-- <header><span>Food Blog</span></header> -->
-        <blogoob></blogoob>
+        <header><span>Food Blog</span></header>
 
         <main>
         
@@ -101,86 +105,83 @@
                 <img src="images/chili.jpg" alt="White Chicken Chili" width="180">
             </aside>
             
-            <!-- <h2>Comments</h2> -->
-            <commentsoob></commentsoob>
+            <h2>Comments</h2>
             
             <section id="blogposts">
-
-            
                 <div class="post">
-                    <img v-on:click="isHidden1=false" src='./images/profile.png' alt="" style="cursor: pointer;">
-                    <span class="author">{{ post1.author }}</span> — 
-                    <span class="date"> {{ post1.date }} </span>
-                    <span class="reply">REPLY</span>
-                    <p>{{ post1.message }} </p>
+                    <img onclick="showDiv1()" src='./images/profile.png' alt="" style="cursor: pointer;">
+                    <span id="author1"></span> — 
+                    <span id="date1"></span>
+                    <span id="reply">REPLY</span>
+                    <p id="message1"></p>
                 </div>
-                <div v-if="!isHidden1" style="width: 30%; height: auto; background-color: black; 
+                <div id="profile1" style="width: 30%; height: auto; background-color: black; 
                                              border-radius: 15px; position: absolute; margin-left: 20%;
-                                             margin-top: -200px;">
-                    <p v-on:click="isHidden1=true" style="text-align: right; cursor: pointer; color: white; margin-right: 10px;">x</p>
-                    <h3 style="color: white; margin-left: 20px; margin-right: 15px;">{{ post1.author }}</h3>
+                                             margin-top: -200px; display: none;">
+                    <p onclick="hideDiv1()" style="text-align: right; cursor: pointer; color: white; margin-right: 10px;">x</p>
+                    <h3 id="author1-diag" style="color: white; margin-left: 20px; margin-right: 15px;"></h3>
                     <h4 style="color: white; display: inline-block; margin-left: 20px; margin-right: 15px;">Foodie Level: </h4>
-                    <span style="color: white; ">{{ post1.foodie }}</span>
+                    <span id='foodie1-diag' style="color: white; "></span>
                     <h4 style="color: white; margin-left: 20px; margin-right: 15px;">Bio: </h4>
-                    <p style="color: white; margin-left: 20px; margin-right: 15px;">{{ post1.bio }}</p><br>
-                    <button v-on:click="isHidden1=true" style="margin-bottom: 20px; margin-left: 20px; cursor: pointer;">Close</button>
+                    <p id='bio1-diag' style="color: white; margin-left: 20px; margin-right: 15px;"></p><br>
+                    <button onclick="hideDiv1()" style="margin-bottom: 20px; margin-left: 20px; cursor: pointer;">Close</button>
                 </div>
 
                 <div class="post">
-                    <img v-on:click="isHidden2=false" src='./images/profile.png' alt="" style="cursor: pointer;">
-                    <span class="author">{{ post2.author }}</span> — 
-                    <span class="date"> {{ post2.date }}</span>
+                    <img onclick="showDiv2()" src='./images/profile.png' alt="" style="cursor: pointer;">
+                    <span id="author2"></span> — 
+                    <span id="date2"></span>
                     <span class="reply">REPLY</span>
-                    <p> {{ post2.message }} </p>
+                    <p id="message2"></p>
                 </div>
-                <div v-if="!isHidden2" style="width: 30%; height: auto; background-color: black; 
+                <div id="profile2" style="width: 30%; height: auto; background-color: black; 
                                              border-radius: 15px; position: absolute; margin-left: 20%;
-                                             margin-top: -200px;">
-                    <p v-on:click="isHidden2=true" style="text-align: right; cursor: pointer; color: white; margin-right: 10px;">x</p>
-                    <h3 style="color: white; margin-left: 20px; margin-right: 15px;">{{ post2.author }}</h3>
+                                             margin-top: -200px; display: none;">
+                    <p onclick="hideDiv2()" style="text-align: right; cursor: pointer; color: white; margin-right: 10px;">x</p>
+                    <h3 id="author2-diag" style="color: white; margin-left: 20px; margin-right: 15px;"></h3>
                     <h4 style="color: white; display: inline-block; margin-left: 20px; margin-right: 15px;">Foodie Level: </h4>
-                    <span style="color: white; ">{{ post2.foodie }}</span>
+                    <span id='foodie2-diag' style="color: white; "></span>
                     <h4 style="color: white; margin-left: 20px; margin-right: 15px;">Bio: </h4>
-                    <p style="color: white; margin-left: 20px; margin-right: 15px;">{{ post2.bio }}</p><br>
-                    <button v-on:click="isHidden2=true" style="margin-bottom: 20px; margin-left: 20px; cursor: pointer">Close</button>
+                    <p id='bio2-diag' style="color: white; margin-left: 20px; margin-right: 15px;"></p><br>
+                    <button onclick="hideDiv2()" style="margin-bottom: 20px; margin-left: 20px; cursor: pointer;">Close</button>
                 </div>
 
                 <div class="post">
-                    <img v-on:click="isHidden3=false" src='./images/profile.png' alt="" style="cursor: pointer;">
-                    <span class="author">{{ post3.author }}</span> — 
-                    <span class="date">{{ post3.date }}</span>
+                    <img onclick="showDiv3()" src='./images/profile.png' alt="" style="cursor: pointer;">
+                    <span id="author3"></span> — 
+                    <span id="date3"></span>
                     <span class="reply">REPLY</span>
-                    <p> {{ post3.message }} </p>
+                    <p id="message3"></p>
                 </div>
-                <div v-if="!isHidden3" style="width: 30%; height: auto; background-color: black; 
+                <div id="profile3" style="width: 30%; height: auto; background-color: black; 
                                              border-radius: 15px; position: absolute; margin-left: 20%;
-                                             margin-top: -200px;">
-                    <p v-on:click="isHidden3=true" style="text-align: right; cursor: pointer; color: white; margin-right: 10px;">x</p>
-                    <h3 style="color: white; margin-left: 20px; margin-right: 15px;">{{ post3.author }}</h3>
+                                             margin-top: -200px; display: none;">
+                    <p onclick="hideDiv3()" style="text-align: right; cursor: pointer; color: white; margin-right: 10px;">x</p>
+                    <h3 id="author3-diag" style="color: white; margin-left: 20px; margin-right: 15px;"></h3>
                     <h4 style="color: white; display: inline-block; margin-left: 20px; margin-right: 15px;">Foodie Level: </h4>
-                    <span style="color: white; ">{{ post3.foodie }}</span>
+                    <span id='foodie3-diag' style="color: white; "></span>
                     <h4 style="color: white; margin-left: 20px; margin-right: 15px;">Bio: </h4>
-                    <p style="color: white; margin-left: 20px; margin-right: 15px;">{{ post3.bio }}</p><br>
-                    <button v-on:click="isHidden3=true" style="margin-bottom: 20px; margin-left: 20px; cursor: pointer">Close</button>
+                    <p id='bio3-diag' style="color: white; margin-left: 20px; margin-right: 15px;"></p><br>
+                    <button onclick="hideDiv3()" style="margin-bottom: 20px; margin-left: 20px; cursor: pointer;">Close</button>
                 </div>
 
                 <div class="post">
-                    <img v-on:click="isHidden4=false" src='./images/profile.png' alt="" style="cursor: pointer;">
-                    <span class="author">{{ post4.author }}</span> — 
-                    <span class="date">{{ post4.date }}</span>
+                    <img onclick="showDiv4()" src='./images/profile.png' alt="" style="cursor: pointer;">
+                    <span id="author4"></span> — 
+                    <span id="date4"></span>
                     <span class="reply">REPLY</span>
-                    <p> {{ post4.message }} </p>
+                    <p id="message4"></p>
                 </div>  
-                <div v-if="!isHidden4" style="width: 30%; height: auto; background-color: black; 
+                <div id="profile4" style="width: 30%; height: auto; background-color: black; 
                                              border-radius: 15px; position: absolute; margin-left: 20%;
-                                             margin-top: -400px;">
-                    <p v-on:click="isHidden4=true" style="text-align: right; cursor: pointer; color: white; margin-right: 10px;">x</p>
-                    <h3 style="color: white; margin-left: 20px; margin-right: 15px;">{{ post4.author }}</h3>
+                                             margin-top: -200px; display: none;">
+                    <p onclick="hideDiv4()" style="text-align: right; cursor: pointer; color: white; margin-right: 10px;">x</p>
+                    <h3 id="author4-diag" style="color: white; margin-left: 20px; margin-right: 15px;"></h3>
                     <h4 style="color: white; display: inline-block; margin-left: 20px; margin-right: 15px;">Foodie Level: </h4>
-                    <span style="color: white; ">{{ post4.foodie }}</span>
+                    <span id='foodie4-diag' style="color: white; "></span>
                     <h4 style="color: white; margin-left: 20px; margin-right: 15px;">Bio: </h4>
-                    <p style="color: white; margin-left: 20px; margin-right: 15px;">{{ post4.bio }}</p><br>
-                    <button v-on:click="isHidden4=true" style="margin-bottom: 20px; margin-left: 20px; cursor: pointer">Close</button>
+                    <p id='bio4-diag' style="color: white; margin-left: 20px; margin-right: 15px;"></p><br>
+                    <button onclick="hideDiv4()" style="margin-bottom: 20px; margin-left: 20px; cursor: pointer;">Close</button>
                 </div>
 
             </section>
@@ -194,14 +195,6 @@
 </div>
 
 <script>
-    var blog = {
-        template: '<header><span>Food Blog</span></header>'
-    }
-
-    var comments = {
-        template: '<h2>Comments</h2>'
-    }
-
     class Post {
         constructor(author, date, foodie, bio, message) {
             // this.avatarPath = './images/profile.png';
@@ -212,26 +205,66 @@
             this.bio = bio;
         }
     }
+    post1 = new Post('Brianna', 'February 18, 2021 @ 3:30 pm', 'Novoice', 'Food enthusiast. Love to cook and experiment. Into only organic, fat free, sugar free stuffs!', 'Was amazing! My Walmart didn’t have coriander in stock and didn’t have ground cumin. I used serrano instead of jalapeño. It was just like my favorite tortilla soup from BJs. I am sending this recipe to my family. I want everyone to try it!'),
+    post2 = new Post('LINH', 'February 15, 2021 @ 9:46 am', 'Newcomer', 'Love food! Grew up with meat and potatoes. Recently venture outside my comfort zone. Loving everything I have been eating so far. Thai is my favorite at this time.', 'I just made this soup today and it’s so tasty! didn’t have corn at home but still turned out very good.  It’s a winner!  I made beef chili for my parents; but since my dad has gout he can’t eat beef; this white chicken chili is perfect for him.  Thank you Lisa!'),
+    post3 = new Post('CATHERINE LEONARDO', 'February 13, 2021 @ 12:58 pm', 'Mentor', 'I have to say I never was the adventurous type until 2 years ago. My boyfriend, who is of Japanese background, exposed me to other cultural food and I have never look back since!', 'I LOVE this White Chicken Chili! You are right, it is satiating meal—delicious with toasted bread. Refreshingly different taste than any chicken chili I’ve made in the past. I made it exactly as written and added some chopped zucchini, carrots, and celery. Instead of shredding the chicken, I chopped it into small pieces. It freezes very well. Will be an all-time favorite, for sure.'),
+    post4 = new Post('KALI', 'February 13, 2021 @ 11:31 am', 'Novice', "Food is my passion. So is cooking. I love to experiment and try new things. I have to admit I'm a food whore! Invite me over for dinner and I'll be there!", 'This recipe is dynamite! My partner usually won’t eat beans but he finished the whole pot (darn was hoping to have some for leftovers haha). This is crowd-pleaser that I am going to add to my regular recipe rotation. Thanks so much, Lisa!'),
+    posts = [post1, post2, post3, post4];
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById('author' + i.toString()).innerHTML = posts[i-1].author;
+        document.getElementById('date' + i.toString()).innerHTML = posts[i-1].date;
+        document.getElementById('message' + i.toString()).innerHTML = posts[i-1].message;
 
-    var app1 = new Vue({
-        el: '#container',
-        data: {
-            post1: new Post('Brianna', 'February 18, 2021 @ 3:30 pm', 'Novoice', 'Food enthusiast. Love to cook and experiment. Into only organic, fat free, sugar free stuffs!', 'Was amazing! My Walmart didn’t have coriander in stock and didn’t have ground cumin. I used serrano instead of jalapeño. It was just like my favorite tortilla soup from BJs. I am sending this recipe to my family. I want everyone to try it!'),
-            post2: new Post('LINH', 'February 15, 2021 @ 9:46 am', 'Newcomer', 'Love food! Grew up with meat and potatoes. Recently venture outside my comfort zone. Loving everything I have been eating so far. Thai is my favorite at this time.', 'I just made this soup today and it’s so tasty! didn’t have corn at home but still turned out very good.  It’s a winner!  I made beef chili for my parents; but since my dad has gout he can’t eat beef; this white chicken chili is perfect for him.  Thank you Lisa!'),
-            post3: new Post('CATHERINE LEONARDO', 'February 13, 2021 @ 12:58 pm', 'Mentor', 'I have to say I never was the adventurous type until 2 years ago. My boyfriend, who is of Japanese background, exposed me to other cultural food and I have never look back since!', 'I LOVE this White Chicken Chili! You are right, it is satiating meal—delicious with toasted bread. Refreshingly different taste than any chicken chili I’ve made in the past. I made it exactly as written and added some chopped zucchini, carrots, and celery. Instead of shredding the chicken, I chopped it into small pieces. It freezes very well. Will be an all-time favorite, for sure.'),
-            post4: new Post('KALI', 'February 13, 2021 @ 11:31 am', 'Novice', "Food is my passion. So is cooking. I love to experiment and try new things. I have to admit I'm a food whore! Invite me over for dinner and I'll be there!", 'This recipe is dynamite! My partner usually won’t eat beans but he finished the whole pot (darn was hoping to have some for leftovers haha). This is crowd-pleaser that I am going to add to my regular recipe rotation. Thanks so much, Lisa!'),
-            isHidden1: true,
-            isHidden2: true,
-            isHidden3: true,
-            isHidden4: true,
-        },
-        components: {
-            'blogoob': blog,
-            'commentsoob': comments,
-        },
-    });
+    }
+    
+    function showDiv1() {
+        // $('#author1-diag').html(post1.author);
+        document.getElementById('profile1').style.display = "block";
+        document.getElementById('author1-diag').innerHTML = post1.author;
+        document.getElementById('foodie1-diag').innerHTML = post1.foodie;
+        document.getElementById('bio1-diag').textContent = post1.bio;
+    }
 
-    // add tooltips for each author:
+    function hideDiv1() {
+        document.getElementById('profile1').style.display = 'none';
+    }
+
+    function showDiv2() {
+        // $('#author1-diag').html(post1.author);
+        document.getElementById('profile2').style.display = "block";
+        document.getElementById('author2-diag').innerHTML = post2.author;
+        document.getElementById('foodie2-diag').innerHTML = post2.foodie;
+        document.getElementById('bio2-diag').textContent = post2.bio;
+    }
+
+    function hideDiv2() {
+        document.getElementById('profile2').style.display = 'none';
+    }
+
+    function showDiv3() {
+        // $('#author1-diag').html(post1.author);
+        document.getElementById('profile3').style.display = "block";
+        document.getElementById('author3-diag').innerHTML = post3.author;
+        document.getElementById('foodie3-diag').innerHTML = post3.foodie;
+        document.getElementById('bio3-diag').textContent = post3.bio;
+    }
+
+    function hideDiv3() {
+        document.getElementById('profile3').style.display = 'none';
+    }
+
+    function showDiv4() {
+        // $('#author1-diag').html(post1.author);
+        document.getElementById('profile4').style.display = "block";
+        document.getElementById('author4-diag').innerHTML = post4.author;
+        document.getElementById('foodie4-diag').innerHTML = post4.foodie;
+        document.getElementById('bio4-diag').textContent = post4.bio;
+    }
+
+    function hideDiv4() {
+        document.getElementById('profile4').style.display = 'none';
+    }
+
     
 
 </script>
