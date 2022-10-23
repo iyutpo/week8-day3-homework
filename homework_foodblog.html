@@ -8,87 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <style>
-        *, ::after, ::before {
-            box-sizing: content-box;
-        }
-        * {
-            font-family:Arial, Helvetica, sans-serif;
-        }
-        #leftside {
-            float:left;
-            width: 30%;
-            min-height: 1200px;
-            background-color:rgb(77, 192, 154);
-        }
-        #rightside {
-            float:left;
-            width: 70%;
-            min-height: 1200px;
-            background-color:rgb(238, 226, 192);
-            position:relative;
-        }
-        #container {
-            background-color:rgba(255, 255, 255, 0.85);
-            position: absolute;
-            top: 15%;
-            left: 15%;
-            min-width: 1100px;
-            min-height: 1050px;
-            border-radius: 0.7em;
-        }
-        header {
-            height: 50px;
-            background-color:rgba(231, 229, 229, 0.5);
-            font-size: 2.75em;
-            padding:0.5em;
-            color:rgb(216, 150, 7);
-        }
-        header span {
-            font-family: 'Sacramento', cursive;
-        }
-        main {
-            position: relative;
-        }
-        main h2 {
-            position: absolute;
-            left: 20%;
-            top: 30px;
-            margin: 25px 0 200px 50px;
-            color:rgb(60, 190, 160);
-            text-transform: uppercase;
-        }
-        main #photos img {
-            margin: 0.75em;
-            border: 0.85em solid rgb(255, 255, 255);
-        }
-        section#blogposts {
-            position: absolute;
-            left: 20%;
-            top: 70px;
-            padding: 50px;
-        }
-        main .post {
-            margin: 25px;
-            padding: 25px;
-            border: 2px solid rgba(83, 78, 58, 0.6);
-            border-radius: 0.5em;
-        }
-        footer {
-            position: absolute;
-            bottom: 0;
-            height: 50px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.85em;
-        }
-        /* avatar image */
-        img {
-            width: 5%; 
-            height: 4%;
-        }
-    </style>
+    <link rel="stylesheet" href="./style/homework_foodblog.css">
+    
 
     
 
@@ -97,12 +18,40 @@
     <aside id="leftside"></aside>
     <aside id="rightside"></aside>
     <div id="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                      aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Recipes</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Lifestyles</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Videos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                  
+              </div>
+            </div>
+          </nav>
         <header><span>Food Blog</span></header>
 
         <main>
         
             <aside id="photos">
-                <img src="images/chili.jpg" alt="White Chicken Chili" width="180">
+                <img src="images/vue images - Google Search.jpeg" alt="White Chicken Chili" width="180">
             </aside>
             
             <h2>Comments</h2>
@@ -194,80 +143,8 @@
     
 </div>
 
-<script>
-    class Post {
-        constructor(author, date, foodie, bio, message) {
-            // this.avatarPath = './images/profile.png';
-            this.author = author;
-            this.date = date;
-            this.message = message;
-            this.foodie = foodie;
-            this.bio = bio;
-        }
-    }
-    post1 = new Post('Brianna', 'February 18, 2021 @ 3:30 pm', 'Novoice', 'Food enthusiast. Love to cook and experiment. Into only organic, fat free, sugar free stuffs!', 'Was amazing! My Walmart didn’t have coriander in stock and didn’t have ground cumin. I used serrano instead of jalapeño. It was just like my favorite tortilla soup from BJs. I am sending this recipe to my family. I want everyone to try it!'),
-    post2 = new Post('LINH', 'February 15, 2021 @ 9:46 am', 'Newcomer', 'Love food! Grew up with meat and potatoes. Recently venture outside my comfort zone. Loving everything I have been eating so far. Thai is my favorite at this time.', 'I just made this soup today and it’s so tasty! didn’t have corn at home but still turned out very good.  It’s a winner!  I made beef chili for my parents; but since my dad has gout he can’t eat beef; this white chicken chili is perfect for him.  Thank you Lisa!'),
-    post3 = new Post('CATHERINE LEONARDO', 'February 13, 2021 @ 12:58 pm', 'Mentor', 'I have to say I never was the adventurous type until 2 years ago. My boyfriend, who is of Japanese background, exposed me to other cultural food and I have never look back since!', 'I LOVE this White Chicken Chili! You are right, it is satiating meal—delicious with toasted bread. Refreshingly different taste than any chicken chili I’ve made in the past. I made it exactly as written and added some chopped zucchini, carrots, and celery. Instead of shredding the chicken, I chopped it into small pieces. It freezes very well. Will be an all-time favorite, for sure.'),
-    post4 = new Post('KALI', 'February 13, 2021 @ 11:31 am', 'Novice', "Food is my passion. So is cooking. I love to experiment and try new things. I have to admit I'm a food whore! Invite me over for dinner and I'll be there!", 'This recipe is dynamite! My partner usually won’t eat beans but he finished the whole pot (darn was hoping to have some for leftovers haha). This is crowd-pleaser that I am going to add to my regular recipe rotation. Thanks so much, Lisa!'),
-    posts = [post1, post2, post3, post4];
-    for (let i = 1; i <= 4; i++) {
-        document.getElementById('author' + i.toString()).innerHTML = posts[i-1].author;
-        document.getElementById('date' + i.toString()).innerHTML = posts[i-1].date;
-        document.getElementById('message' + i.toString()).innerHTML = posts[i-1].message;
 
-    }
-    
-    function showDiv1() {
-        // $('#author1-diag').html(post1.author);
-        document.getElementById('profile1').style.display = "block";
-        document.getElementById('author1-diag').innerHTML = post1.author;
-        document.getElementById('foodie1-diag').innerHTML = post1.foodie;
-        document.getElementById('bio1-diag').textContent = post1.bio;
-    }
-
-    function hideDiv1() {
-        document.getElementById('profile1').style.display = 'none';
-    }
-
-    function showDiv2() {
-        // $('#author1-diag').html(post1.author);
-        document.getElementById('profile2').style.display = "block";
-        document.getElementById('author2-diag').innerHTML = post2.author;
-        document.getElementById('foodie2-diag').innerHTML = post2.foodie;
-        document.getElementById('bio2-diag').textContent = post2.bio;
-    }
-
-    function hideDiv2() {
-        document.getElementById('profile2').style.display = 'none';
-    }
-
-    function showDiv3() {
-        // $('#author1-diag').html(post1.author);
-        document.getElementById('profile3').style.display = "block";
-        document.getElementById('author3-diag').innerHTML = post3.author;
-        document.getElementById('foodie3-diag').innerHTML = post3.foodie;
-        document.getElementById('bio3-diag').textContent = post3.bio;
-    }
-
-    function hideDiv3() {
-        document.getElementById('profile3').style.display = 'none';
-    }
-
-    function showDiv4() {
-        // $('#author1-diag').html(post1.author);
-        document.getElementById('profile4').style.display = "block";
-        document.getElementById('author4-diag').innerHTML = post4.author;
-        document.getElementById('foodie4-diag').innerHTML = post4.foodie;
-        document.getElementById('bio4-diag').textContent = post4.bio;
-    }
-
-    function hideDiv4() {
-        document.getElementById('profile4').style.display = 'none';
-    }
-
-    
-
-</script>
+<script src="./js/homework_foodblog.js"></script>
 
 </body>
 </html>
